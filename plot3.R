@@ -37,7 +37,7 @@ plot3<-function(){
     if (file.exists(PNG_FileName)) unlink(PNG_FileName, recursive = TRUE, force = TRUE)
     
     #Create a graph.
-    dev.set(1)
+    png(PNG_FileName, width = 480, height = 480)
     with(powerTable, {
         plot(DateTime, Sub_metering_1, type="l", col="black", ylab="Energy sub metering")
         points(DateTime, Sub_metering_2, type="l", col="red")
@@ -46,9 +46,7 @@ plot3<-function(){
     
     legend("topright", pch = 1, col = c("black", "red", "blue"), legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
     
-    #Save the histogram to a png file.
-    dev.copy(png, PNG_FileName)
-    
+    #Turn off the png device.
     dev.off()
     
     

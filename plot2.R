@@ -37,13 +37,10 @@ plot2<-function(){
     if (file.exists(PNG_FileName)) unlink(PNG_FileName, recursive = TRUE, force = TRUE)
     
     #Create a graph.
-    dev.set(1)
+    png(PNG_FileName, width = 480, height = 480)
     with(powerTable, plot(DateTime, Global_active_power, type="l", ylab="Global Active Power (kilowatts)", main=""))
 
     #Save the histogram to a png file.
-    dev.copy(png, PNG_FileName)
-    
     dev.off()
-    
-    
+
 }

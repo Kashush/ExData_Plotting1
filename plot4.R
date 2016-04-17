@@ -37,7 +37,7 @@ plot4<-function(){
     if (file.exists(PNG_FileName)) unlink(PNG_FileName, recursive = TRUE, force = TRUE)
     
     #Create a grid of four graphs.
-    dev.set(1)
+    png(PNG_FileName, width = 480, height = 480)
     par(mfrow=c(2,2))
     
     #First graph.
@@ -58,9 +58,7 @@ plot4<-function(){
     #Final graph.
     with(powerTable, plot(DateTime, Global_reactive_power, type="l", xlab="datetime", ylab="Global_reactive_power", main=""))
     
-    #Save the histogram to a png file.
-    dev.copy(png, PNG_FileName)
-    
+    #Turn off the png device.
     dev.off()
 
 }

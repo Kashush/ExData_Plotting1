@@ -33,13 +33,11 @@ plot1<-function(){
     if (file.exists(PNG_FileName)) unlink(PNG_FileName, recursive = TRUE, force = TRUE)
 
     #Create a historgram.
-    dev.set(1)
+    png(PNG_FileName, width = 480, height = 480)
     hist(powerTable$Global_active_power, col="red", main="", xlab = "Global Active Power (kilowatts)")
     title(main = "Global Active Power")
     
     #Save the histogram to a png file.
-    dev.copy(png, PNG_FileName)
-    
     dev.off()
 
 
